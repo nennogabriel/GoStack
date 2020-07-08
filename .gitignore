@@ -5,8 +5,6 @@ dist/
 dist/*
 build/
 build/*
-public/
-public/*
 
 ### Security Data ###
 .env
