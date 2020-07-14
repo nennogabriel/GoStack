@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export default class CreateUsers1594652253543 implements MigrationInterface {
@@ -9,7 +9,7 @@ export default class CreateUsers1594652253543 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
