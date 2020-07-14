@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:3333
+@thisUrl = {{baseUrl}}/appointments
+
+{{thisUrl}}
+
+###
+POST {{thisUrl}}
+content-type: application/json
+
+{
+  "provider_id": "08968bf6-8320-4d8b-9c9f-277f71fb6be1",
+  "date" : "{{$datetime iso8601}}"
+}
+
