@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 import authConfig from '../config/authConfig';
