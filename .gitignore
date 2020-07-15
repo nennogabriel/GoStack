@@ -5,8 +5,8 @@ build/
 build/*
 
 ### Temporary Folder ###
-**/tmp/*
-!**/tmp/.gitkeep
+*/tmp/*
+!*/tmp/.gitkeep
 
 ### Security Data ###
 .env
