@@ -1,10 +1,12 @@
 ### Project files and folders ###
-tmp/
-tmp/*
 dist/
 dist/*
 build/
 build/*
+
+### Temporary Folder ###
+**/tmp/*
+!**/tmp/.gitkeep
 
 ### Security Data ###
 .env
