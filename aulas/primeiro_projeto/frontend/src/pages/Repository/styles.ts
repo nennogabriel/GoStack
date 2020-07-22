@@ -26,6 +26,12 @@ export const RepositoryInfo = styled.section`
   header {
     display: flex;
     align-items: center;
+    img {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      margin-right: 40px;
+    }
     strong {
       font-size: 36px;
       color: #3d3d4d;
@@ -52,7 +58,7 @@ export const RepositoryInfo = styled.section`
       }
       span {
         display: block;
-        margin-top: 40px;
+        margin-top: 4px;
         color: #6c6c80;
       }
     }
