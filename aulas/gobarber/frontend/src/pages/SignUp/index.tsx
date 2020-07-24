@@ -4,6 +4,7 @@ import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+
 import logoImg from '../../assets/logo.svg';
 
 import Input from '../../components/Input';
