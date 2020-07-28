@@ -30,6 +30,11 @@ import {
   CreateAccountButtonText,
 } from './styles';
 
+interface SignInFormData {
+  email: string;
+  password: string;
+}
+
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
   const inputPasswordRef = useRef<TextInput>(null);
@@ -84,7 +89,7 @@ const SignIn: React.FC = () => {
             </View>
             <Form
               style={{ width: '100%' }}
-              onSubmit={handleSignIn}
+              onSubmit={handleSubmit}
               ref={formRef}
             >
               <Input
