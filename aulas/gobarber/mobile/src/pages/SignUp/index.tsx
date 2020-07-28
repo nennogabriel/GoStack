@@ -18,7 +18,7 @@ import { FormHandles } from '@unform/core';
 import { useNavigation } from '@react-navigation/native';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-
+import api from '../../services/api';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.png';
@@ -36,43 +36,47 @@ const SignUp: React.FC = () => {
   const inputEmailRef = useRef<TextInput>(null);
   const inputPasswordRef = useRef<TextInput>(null);
   const navigation = useNavigation();
-  const handleSubmit = useCallback(async (data: SignUpFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: SignUpFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome Obrigatório'),
-        email: Yup.string()
-          .required('E-mail Obrigatório')
-          .email('Digite um email válido'),
-        password: Yup.string().min(6, 'Mínimo de 6 Digitos'),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome Obrigatório'),
+          email: Yup.string()
+            .required('E-mail Obrigatório')
+            .email('Digite um email válido'),
+          password: Yup.string().min(6, 'Mínimo de 6 Digitos'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      // await api.post('/users', data);
-      Alert.alert(
-        'Cadastro Realizado!',
-        'Você ja pode fazer seu logon no GoBarber!',
-      );
-      // history.push('/');
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        await api.post('/users', data);
+        Alert.alert(
+          'Cadastro Realizado!',
+          'Você ja pode fazer seu logon no GoBarber!',
+        );
+        navigation.navigate('SignIn');
+        // history.push('/');
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
 
-        return;
+          return;
+        }
+
+        Alert.alert(
+          'Erro no cadastro',
+          'Ocorreu um erro ao fazer cadastro, tente novamente',
+        );
       }
-
-      Alert.alert(
-        'Erro no cadastro',
-        'Ocorreu um erro ao fazer cadastro, tente novamente',
-      );
-    }
-  }, []);
+    },
+    [navigation],
+  );
   return (
     <>
       <KeyboardAvoidingView
