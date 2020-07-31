@@ -1,4 +1,4 @@
-import { container } from 'tsyringe';
+import { container, container } from 'tsyringe';
 
 import './providers';
 import '@modules/users/providers';
@@ -8,6 +8,9 @@ import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepo
 
 import IApointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
+
+import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository';
+import UserTokensRepository from '@modules/users/infra/typeorm/repositories/UserTokenRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -19,7 +22,7 @@ container.registerSingleton<IApointmentsRepository>(
   AppointmentsRepository,
 );
 
-// container.registerSingleton<IUserTokensRepository>(
-//   'UserTokensRepository',
-//   UserTokensRepository,
-// );
+container.registerSingleton<IUserTokensRepository>(
+  'UserTokensRepository',
+  UserTokensRepository,
+);
