@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import mailConfig from '@config/mail';
+import mailConfig from '@config/mailConfig';
 
 import IMailProvider from './models/IMailProvider';
 
