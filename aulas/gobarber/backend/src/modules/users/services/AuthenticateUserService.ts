@@ -4,6 +4,7 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import authConfig from '@config/authConfig';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import { classToClass } from 'class-transformer';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
@@ -47,7 +48,8 @@ class AuthenticateUserService {
       subject: user.id,
       expiresIn,
     });
-    return { user, token };
+
+    return { user: classToClass(user), token };
   }
 }
 
