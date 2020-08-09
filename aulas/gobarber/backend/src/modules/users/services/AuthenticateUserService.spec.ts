@@ -2,21 +2,15 @@ import AppError from '@shared/errors/AppError';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import AuthenticateUserService from './AuthenticateUserService';
-import CreateUserService from './CreateUserService';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
-let createUserService: CreateUserService;
 let authenticateUserService: AuthenticateUserService;
 
 describe('Authenticate User', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeHashProvider = new FakeHashProvider();
-    createUserService = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
     authenticateUserService = new AuthenticateUserService(
       fakeUsersRepository,
       fakeHashProvider,
@@ -24,7 +18,7 @@ describe('Authenticate User', () => {
   });
 
   it('should be able to authenticate an user', async () => {
-    const user = await createUserService.execute({
+    const user = await fakeUsersRepository.create({
       name: 'Pedro Moreno',
       email: 'pedro@example.com',
       password: 'password123',
@@ -36,7 +30,7 @@ describe('Authenticate User', () => {
     });
 
     expect(response).toHaveProperty('token');
-    expect(response.user).toEqual(user);
+    expect(response.user.email).toEqual(user.email);
   });
 
   it('should not be able to authenticate an inexistent user', async () => {
@@ -49,7 +43,7 @@ describe('Authenticate User', () => {
   });
 
   it('should not be able to authenticate wrong password', async () => {
-    await createUserService.execute({
+    await fakeUsersRepository.create({
       name: 'Pedro Moreno',
       email: 'pedro@example.com',
       password: 'password123',
