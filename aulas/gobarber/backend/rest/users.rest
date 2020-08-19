@@ -2,7 +2,7 @@
 @thisUrl = {{baseUrl}}/users
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQ3NjIzNDAsImV4cCI6MTU5NzM1NDM0MCwic3ViIjoiNzU5MWRkNWQtZWZjNi00MDhmLTg4N2MtNzg0MzY5MjljNDNmIn0.IouAyV28IK3zo9Z8z0YUA_PG22iW0YWkNloorCJbQFo
 
-###
+### Register
 POST {{thisUrl}}
 Content-Type: application/json
 
