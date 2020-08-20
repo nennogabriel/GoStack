@@ -18,8 +18,8 @@ class CreateAppointmentService {
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
 
-    @inject('NotificationRepository')
-    private notificationRepository: INotificationsRepository,
+    @inject('NotificationsRepository')
+    private notificationsRepository: INotificationsRepository,
 
     @inject('CacheProvider')
     private cacheProvider: ICacheProvider,

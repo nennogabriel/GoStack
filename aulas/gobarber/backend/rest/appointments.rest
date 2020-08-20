@@ -1,8 +1,9 @@
 @baseUrl = http://localhost:3333
 @thisUrl = {{baseUrl}}/appointments
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTQ3NjIzNDAsImV4cCI6MTU5NzM1NDM0MCwic3ViIjoiNzU5MWRkNWQtZWZjNi00MDhmLTg4N2MtNzg0MzY5MjljNDNmIn0.IouAyV28IK3zo9Z8z0YUA_PG22iW0YWkNloorCJbQFo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTc4OTA4ODIsImV4cCI6MTYwMDQ4Mjg4Miwic3ViIjoiNzU5MWRkNWQtZWZjNi00MDhmLTg4N2MtNzg0MzY5MjljNDNmIn0.oZnKES1Sr4ahurfa08697kxWOP-WqAmTLtNrESK-bf0
 
 
+### Get appointments
 {{thisUrl}}
 content-type: application/json
 Authorization: Bearer {{token}}
@@ -17,3 +18,6 @@ Authorization: Bearer {{token}}
   "date" : "{{$datetime iso8601}}"
 }
 
+###
+{{baseUrl}}/providers/7591dd5d-efc6-408f-887c-78436929c43f/month-availability/?year=2020&month=9
+Authorization: Bearer {{token}}

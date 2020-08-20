@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3333
 @thisUrl = {{baseUrl}}/users
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTc4MDQ3NjEsImV4cCI6MTYwMDM5Njc2MSwic3ViIjoiNzU5MWRkNWQtZWZjNi00MDhmLTg4N2MtNzg0MzY5MjljNDNmIn0.3h7h-Vi1vut6oCzq0I8gcHTnSjIWcvZE_tevK1Kee0Q
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTc5NDAxMzEsImV4cCI6MTYwMDUzMjEzMSwic3ViIjoiYTdiYjAzNjgtMWVhYy00N2UwLWIwZWYtODMzODkxYWI5NDUwIn0.ZOARytcFxXOtSTlyKUvApTKYqYMNp1CmrWBMQKVNPNY
 
 ### Register
 POST {{thisUrl}}
