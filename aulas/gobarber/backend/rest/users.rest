@@ -1,32 +1,69 @@
-@baseUrl = http://localhost:3333
-@thisUrl = {{baseUrl}}/users
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTc5NDAxMzEsImV4cCI6MTYwMDUzMjEzMSwic3ViIjoiYTdiYjAzNjgtMWVhYy00N2UwLWIwZWYtODMzODkxYWI5NDUwIn0.ZOARytcFxXOtSTlyKUvApTKYqYMNp1CmrWBMQKVNPNY
+### User Variables
+  @providerId = {{provider.response.body.user.id}}
+  @providerToken = {{provider.response.body.token}}
+  @clientId = {{client.response.body.user.id}}
+  @clientToken = {{client.response.body.token}}
+# @name provider
+POST {{baseUrl}}/sessions
+  Content-Type: application/json
 
-### Register
-POST {{thisUrl}}
-Content-Type: application/json
-
-{
-  "name": "Pedro Moreno",
-  "email": "pedro@teste.com",
-  "password": "test123"
-}
+  {
+    "email": "{{providerEmail}}",
+    "password": "{{providerPassword}}"
+  }
 
 ###
-PATCH {{thisUrl}}/avatar
+# @name client
+POST {{baseUrl}}/sessions
+  Content-Type: application/json
+
+  {
+    "email": "{{clientEmail}}",
+    "password": "{{clientPassword}}"
+  }
+
+###
+###
+### Create Provider
+POST {{baseUrl}}/users
+  Content-Type: application/json
+
+  {
+    "name": "{{providerName}}",
+    "email": "{{providerEmail}}",
+   "password": "{{providerPassword}}"
+  }
+
+### Create Client
+POST {{baseUrl}}/users
+  Content-Type: application/json
+
+  {
+    "name": "{{clientName}}",
+    "email": "{{clientEmail}}",
+    "password": "{{clientPassword}}"
+  }
+
+### Provider Avatar
+PATCH {{baseUrl}}/users/avatar
 Content-Type: multipart/form-data; boundary=MyBoundary
-Authorization: Bearer {{token}}
+Authorization: Bearer {{providerToken}}
 
 --MyBoundary
-Content-Disposition: form-data; name="avatar"; filename="avatar.jpg"
+Content-Disposition: form-data; name="avatar"; filename="provider.jpg"
 Content-Type: application/octet-stream
 
-< ./tmp/avatar.jpg
+< ./tmp/provider.jpg
 --MyBoundary--
 
+### Client Avatar
+PATCH {{baseUrl}}/users/avatar
+Content-Type: multipart/form-data; boundary=MyBoundary
+Authorization: Bearer {{clientToken}}
 
+--MyBoundary
+Content-Disposition: form-data; name="avatar"; filename="client.jpg"
+Content-Type: application/octet-stream
 
-
-
-
-
+< ./tmp/client.jpg
+--MyBoundary--

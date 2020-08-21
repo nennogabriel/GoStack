@@ -28,7 +28,7 @@ class ListProviderAppointmentsService {
     month,
     day,
   }: IRequest): Promise<Appointment[]> {
-    const cacheKey = `list-ptovider-appointments:${provider_id}:${year}-${month}-${day}`;
+    const cacheKey = `list-provider-appointments:${provider_id}:${year}-${month}-${day}`;
     let appointments = await this.cacheProvider.recover<Appointment[]>(
       cacheKey,
     );

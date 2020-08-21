@@ -1,10 +1,26 @@
-@baseUrl = http://localhost:3333
-@thisUrl = {{baseUrl}}/sessions
+### User Variables
+  @providerId = {{provider.response.body.user.id}}
+  @providerToken = {{provider.response.body.token}}
+  @clientId = {{client.response.body.user.id}}
+  @clientToken = {{client.response.body.token}}
+# @name provider
+POST {{baseUrl}}/sessions
+  Content-Type: application/json
 
-POST {{thisUrl}}
-Content-Type: application/json
+  {
+    "email": "{{providerEmail}}",
+    "password": "{{providerPassword}}"
+  }
 
-{
-  "email": "pedro@teste.com",
-  "password": "123456"
-}
+###
+# @name client
+POST {{baseUrl}}/sessions
+  Content-Type: application/json
+
+  {
+    "email": "{{clientEmail}}",
+    "password": "{{clientPassword}}"
+  }
+
+###
+###

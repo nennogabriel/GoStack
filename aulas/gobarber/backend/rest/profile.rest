@@ -24,25 +24,20 @@ POST {{baseUrl}}/sessions
 
 ###
 ###
-@tomorow = {{$datetime "YYYY-MM-DD" 1 d}}
-@tomorowYear = {{$datetime "YYYY" 1 d}}
-@tomorowMonth = {{$datetime "MM" 1 d}}
-@tomorowDay = {{$datetime "DD" 1 d}}
-@timeZone = -0300
-
 ###
-POST {{baseUrl}}/appointments
-content-type: application/json
-Authorization: Bearer {{clientToken}}
-
-{
-  "provider_id": "{{providerId}}",
-  "date" : "{{tomorow}}T16:00:00.000{{timeZone}}"
-}
-
+GET {{baseUrl}}/profile
+  Content-Type: application/json
+  Authorization: Bearer {{clientToken}}
 ###
-GET {{baseUrl}}/appointments/me
-  ?year={{tomorowYear}}
-  &month={{tomorowMonth}}
-  &day={{tomorowDay}}
-Authorization: Bearer {{clientToken}}
+PUT {{baseUrl}}/profile
+  Content-Type: application/json
+  Authorization: Bearer {{clientToken}}
+
+  {
+    "name": "{{clientName}}",
+    "email": "{{clientEmail}}",
+    "old_password": "{{clientPassword}}",
+    "password": "{{clientPassword}}",
+    "password_confirmation": "{{clientPassword}}"
+  }
+###

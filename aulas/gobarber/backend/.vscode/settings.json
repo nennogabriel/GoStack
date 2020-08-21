@@ -5,5 +5,18 @@
     "middlewares",
     "typeorm",
     "varchar"
-  ]
+  ],
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "baseUrl": "http://localhost:3333"
+    },
+    "development": {
+      "providerName": "Diego Fernandes",
+      "providerEmail": "diego@rocketseat.com.br",
+      "providerPassword": "123456",
+      "clientName": "Pedro Moreno",
+      "clientEmail": "pedro@seal.works",
+      "clientPassword": "654321",
+    }
+  }
 }

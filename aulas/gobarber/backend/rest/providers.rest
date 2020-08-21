@@ -23,26 +23,23 @@ POST {{baseUrl}}/sessions
   }
 
 ###
-###
-@tomorow = {{$datetime "YYYY-MM-DD" 1 d}}
 @tomorowYear = {{$datetime "YYYY" 1 d}}
 @tomorowMonth = {{$datetime "MM" 1 d}}
 @tomorowDay = {{$datetime "DD" 1 d}}
-@timeZone = -0300
 
 ###
-POST {{baseUrl}}/appointments
-content-type: application/json
+GET {{baseUrl}}/providers
+Authorization: Bearer {{providerToken}}
+
+###
+GET {{baseUrl}}/providers/{{providerId}}/month-availability
+  ?year={{tomorowYear}}
+  &month={{tomorowMonth}}
 Authorization: Bearer {{clientToken}}
 
-{
-  "provider_id": "{{providerId}}",
-  "date" : "{{tomorow}}T16:00:00.000{{timeZone}}"
-}
-
 ###
-GET {{baseUrl}}/appointments/me
+GET {{baseUrl}}/providers/{{providerId}}/day-availability
   ?year={{tomorowYear}}
   &month={{tomorowMonth}}
   &day={{tomorowDay}}
-Authorization: Bearer {{clientToken}}
+Authorization: Bearer {{providerToken}}
