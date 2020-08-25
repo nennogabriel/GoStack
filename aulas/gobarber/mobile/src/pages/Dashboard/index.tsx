@@ -45,8 +45,8 @@ const Dashboard: React.FC = () => {
   }, [navigate, signOut]);
 
   const navigateToCreateAppointment = useCallback(
-    (provider_id: string) => {
-      navigate('CreateAppointment', { provider_id });
+    (providerId: string) => {
+      navigate('CreateAppointment', { providerId });
     },
     [navigate],
   );
