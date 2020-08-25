@@ -3,12 +3,12 @@ import { Text } from 'react-native';
 
 import { Container } from './styles';
 
-const AppointmentCreted: React.FC = () => {
+const AppointmentCreated: React.FC = () => {
   return (
     <Container>
-      <Text>AppointmentCreted</Text>
+      <Text>AppointmentCreated</Text>
     </Container>
   );
 };
 
-export default AppointmentCreted;
+export default AppointmentCreated;
