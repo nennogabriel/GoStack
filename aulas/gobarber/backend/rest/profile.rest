@@ -41,3 +41,12 @@ PUT {{baseUrl}}/profile
     "password_confirmation": "{{clientPassword}}"
   }
 ###
+PUT {{baseUrl}}/profile
+  Content-Type: application/json
+  Authorization: Bearer {{clientToken}}
+
+  {
+    "name": "{{clientName}}",
+    "email": "{{clientEmail}}"
+  }
+###

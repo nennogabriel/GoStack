@@ -48,7 +48,7 @@ class UpdateProfileService {
     user.name = name;
     user.email = email;
 
-    if (password) {
+    if (!!password) {
       if (!old_password) {
         throw new AppError('You need the old password to set a new password');
       } else {
